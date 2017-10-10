@@ -1,0 +1,10 @@
+-main hx.Background
+-lib chrome-extension
+-lib haxe-crypto
+-js js/background.js
+
+--next
+
+-main hx.Options
+-lib vue
+-js js/options.js
