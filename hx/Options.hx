@@ -1,30 +1,43 @@
 package hx;
 
-import vue.Vue;
-import js.Lib;
+import chrome.Windows;
+import angular.Angular;
+import angular.service.Scope;
 
-@:expose
 class Options {
 
-    public static var app:Vue;
+    static private var cipher:Cipher = null;
 
-    static public function main() {
-        app = new Vue({
-            el:"#app",
-            created:function() {
-                var self = Lib.nativeThis;
-                Repository.instance.getHistories(function(r) {
-                    self.histories = r;
-                });
-            },
-            data: {
-                histories:[]
-            },
-            methods:{
-                click:function(url:String) {
-                }
+    static private var histories:Array<History> = [];
+
+    static private function refreshHistories(scope:Scope) {
+        if (cipher == null) {
+            Cipher.readPrivateKey("id_rsa.pem", function(key) {
+                cipher = new Cipher(key);
+                refreshHistories(scope);
+            });
+            return;
+        }
+        Repository.instance.getHistories(function(r) {
+            for (h in r) {
+                h.url = cipher.decrypt(h.url);
+                histories.push(h);
             }
+            scope.apply();
         });
     }
 
+    static public function main() {
+        var appController = function(scope:Scope) {
+            scope.set("histories", histories);
+            scope.set("click", function(h:History) {
+                Windows.create({"url":h.url, "incognito":true});
+            });
+
+            refreshHistories(scope);
+        }
+
+        var module = Angular.module("appModule", [])
+            .controller("appController", appController);
+    }
 }

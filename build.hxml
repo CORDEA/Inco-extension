@@ -6,5 +6,7 @@
 --next
 
 -main hx.Options
--lib vue
+-lib chrome-extension
+-lib haxe-crypto
+-lib angular.haxe
 -js js/options.js

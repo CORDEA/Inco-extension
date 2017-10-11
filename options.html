@@ -5,21 +5,17 @@
     <link rel="stylesheet" href="options.css">
 </head>
 
-<body>
-    <div id="app">
-        <script src="js/vue.min.js"></script>
-        <!-- <h2>Inco</h2> -->
-
+<body ng-app="appModule" ng-controller="appController">
+    <div>
         <div class="list">
-            <template v-for="history in histories">
-                <div class="list-item">
-                    <span>
-                        {{ history.url }}
-                    </span>
-                </div>
-            </template>
+            <div class="list-item" ng-repeat="history in histories" ng-click="click(history)">
+                <span class="primary-text">
+                    {{history.url}}
+                </span>
+            </div>
         </div>
     </div>
+    <script src="js/angular.js"></script>
     <script src="js/options.js"></script>
 </body>
 </html>
