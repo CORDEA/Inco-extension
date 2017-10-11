@@ -1,0 +1,32 @@
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.list-item {
+    width: 100%;
+    padding: 8px;
+    border-bottom: solid 1px #BDBDBD;
+}
+
+.list-item:hover {
+    background: #F5F5F5;
+}
+
+.list-item:active {
+    background: #EEEEEE;
+}
+
+.list {
+    width: 100%;
+}
+
+.primary-text {
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    color: #212121;
+    user-select: none;
+}
