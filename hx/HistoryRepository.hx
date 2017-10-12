@@ -3,9 +3,9 @@ package hx;
 import haxe.Http;
 import haxe.Json;
 
-class Repository {
+class HistoryRepository {
 
-    public static var instance(default,null) = new Repository();
+    public static var instance(default,null) = new HistoryRepository();
 
     private function new() {}
 
@@ -20,8 +20,10 @@ class Repository {
         http.request(true);
     }
 
-    public function getHistories(onResult:Array<History> -> Void) {
+    public function getHistories(token:String,onResult:Array<History> -> Void) {
         var http = new Http(Constants.BASE_URL + "/histories");
+
+        http.addHeader("Authorization", 'Bearer $token');
 
         http.onData = function(r) {
             var result:Array<History> = Json.parse(r);

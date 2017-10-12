@@ -12,6 +12,7 @@
     "options_page": "login.html",
     "permissions": [
         "tabs",
+        "storage",
         "<all_urls>"
     ],
     "manifest_version": 2

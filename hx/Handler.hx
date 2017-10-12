@@ -15,7 +15,7 @@ class Handler {
             return;
         }
         url = tab.url;
-        Repository.instance.addHistory(url, function(msg) {
+        HistoryRepository.instance.addHistory(url,function(msg) {
             trace(msg);
         });
     }

@@ -8,6 +8,8 @@ class Options {
 
     static private var cipher:Cipher = null;
 
+    static private var token:String = null;
+
     static private var histories:Array<History> = [];
 
     static private function refreshHistories(scope:Scope) {
@@ -18,7 +20,17 @@ class Options {
             });
             return;
         }
-        Repository.instance.getHistories(function(r) {
+        if (token == null) {
+            LoginRepository.instance.getToken(function(t) {
+                token = t;
+                refreshHistories(scope);
+            });
+            return;
+        }
+        if (token.length < 1) {
+            return;
+        }
+        HistoryRepository.instance.getHistories(token,function(r) {
             for (h in r) {
                 h.url = cipher.decrypt(h.url);
                 histories.push(h);
