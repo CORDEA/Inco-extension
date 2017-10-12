@@ -15,7 +15,7 @@ class Options {
 
     static private function refreshHistories(scope:Scope) {
         if (cipher == null) {
-            Cipher.readPrivateKey("id_rsa.pem", function(key) {
+            Cipher.readPrivateKey("private.pem", function(key) {
                 cipher = new Cipher(key);
                 refreshHistories(scope);
             });
