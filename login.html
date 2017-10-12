@@ -1,0 +1,23 @@
+<html>
+    
+    <head>
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+        <link rel="stylesheet" href="login.css">
+    </head>
+    
+    <body ng-app="appModule" ng-controller="appController as c">
+        <div>
+           <div class="container">
+               <input type="text" class="text" placeholder="Username" ng-model="c.username"/>
+           </div>
+           <div class="container">
+               <input type="password" class="text" placeholder="Password" ng-model="c.password"/>
+           </div>
+           <div id="submit-container">
+               <input type="button" class="button" value="Login" ng-click="click()"/>
+           </div>
+        </div>
+        <script src="js/angular.js"></script>
+        <script src="js/login.js"></script>
+    </body>
+    </html>

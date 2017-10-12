@@ -9,7 +9,7 @@
         "scripts": ["js/background.js"],
         "persistent": false
     },
-    "options_page": "options.html",
+    "options_page": "login.html",
     "permissions": [
         "tabs",
         "<all_urls>"

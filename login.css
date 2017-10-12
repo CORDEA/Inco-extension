@@ -1,0 +1,26 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    display: table;
+    margin: 0 auto;
+}
+
+.text {
+    width: 250px;
+}
+
+.container {
+    margin-top: 12px;
+}
+
+.button {
+    text-align: center;
+    width: 80px;
+}
+
+#submit-container {
+    margin-top: 36px;
+    text-align: end;
+}

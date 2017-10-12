@@ -10,3 +10,11 @@
 -lib haxe-crypto
 -lib angular.haxe
 -js js/options.js
+
+--next
+
+-main hx.Login
+-lib chrome-extension
+-lib haxe-crypto
+-lib angular.haxe
+-js js/login.js
