@@ -2,6 +2,7 @@ package hx;
 
 import chrome.Windows;
 import angular.Angular;
+import haxe.ds.StringMap;
 import angular.service.Scope;
 
 class Options {
@@ -31,9 +32,20 @@ class Options {
             return;
         }
         HistoryRepository.instance.getHistories(token,function(r) {
-            for (h in r) {
-                h.url = cipher.decrypt(h.url);
-                histories.push(h);
+            var historyMap = new StringMap<History>();
+            for (history in r) {
+                history.url = cipher.decrypt(history.url);
+                if (historyMap.exists(history.url)) {
+                    var newHistory = historyMap.get(history.url);
+                    newHistory.count += 1;
+                    historyMap.set(history.url, newHistory);
+                    continue;
+                }
+                history.count = 1;
+                historyMap.set(history.url, history);
+            }
+            for (v in historyMap) {
+                histories.push(v);
             }
             scope.apply();
         });

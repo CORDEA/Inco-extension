@@ -7,6 +7,7 @@ body {
 .list-item {
     width: 100%;
     padding: 8px;
+    display: table;
     border-bottom: solid 1px #BDBDBD;
 }
 
@@ -18,12 +19,26 @@ body {
     background: #EEEEEE;
 }
 
+.list-count {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    color: #FFFFFF;
+    background: #9E9E9E;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+}
+
 .list {
     width: 100%;
 }
 
 .primary-text {
     width: 100%;
+    margin-left: 8px;
+    margin-top: 2px;
     text-overflow: ellipsis;
     overflow: hidden;
     display: inline-block;

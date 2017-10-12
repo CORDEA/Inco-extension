@@ -9,6 +9,7 @@
     <div>
         <div class="list">
             <div class="list-item" ng-repeat="history in histories" ng-click="click(history)">
+                <div class="list-count">{{history.count}}</div>
                 <span class="primary-text">
                     {{history.url}}
                 </span>
