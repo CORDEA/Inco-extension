@@ -4,11 +4,7 @@ class Handler {
 
     private var url:String;
 
-    private var privateKey:String;
-
-    public function new(privateKey:String)  {
-        this.privateKey = privateKey;
-    }
+    public function new() { }
 
     public function handle(tabId:Int,tab:chrome.Tabs.Tab) {
         if (!tab.incognito || url == tab.url) {
